@@ -16,7 +16,7 @@ zap = ZAPv2(apikey=apikey)
 zap.core.new_session()
 
 zap._request(zap.base + 'openapi/action/importUrl/', {'url': 'http://petstore.swagger.io/v2/swagger.json'})
-# target = 'https://kinto.dev.mozaws.net/v1/'
+target = 'http://petstore.swagger.io/v2/'
 
 # Proxy a request to the target so that ZAP has something to deal with
 print 'Accessing target %s' % target
