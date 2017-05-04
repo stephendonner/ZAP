@@ -35,11 +35,11 @@ while (int(zap.spider.status(scanid)) < 100):
 
 print 'Spider completed'
 
-while (int(zap.pscan.records_to_scan) > 0):
-    print ('Records to passive scan : ' + zap.pscan.records_to_scan)
-    time.sleep(2)
+# while (int(zap.pscan.records_to_scan) > 0):
+#    print ('Records to passive scan : ' + zap.pscan.records_to_scan)
+#    time.sleep(2)
 
-print 'Passive Scan completed'
+# print 'Passive Scan completed'
 
 print 'Active Scanning target %s' % target
 scanid = zap.ascan.scan(target)
