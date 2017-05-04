@@ -5,7 +5,8 @@ from pprint import pprint
 from zapv2 import ZAPv2
 
 
-apikey = None # Change to match the API key set in ZAP, or use None if the API key is disabled
+# Change to match the API key set in ZAP, or use None if the API key is disabled
+apikey = None
 
 # By default, ZAP API client will connect to port 8080
 zap = ZAPv2(apikey=apikey)
@@ -14,7 +15,7 @@ zap = ZAPv2(apikey=apikey)
 
 zap.core.new_session()
 
-zap._request(zap.base + 'openapi/action/importUrl/',{'url':'https://kinto.dev.mozaws.net/v1/__api__'})
+zap._request(zap.base + 'openapi/action/importUrl/', {'url': 'https://kinto.dev.mozaws.net/v1/__api__'})
 target = 'https://kinto.dev.mozaws.net/v1/'
 
 # Proxy a request to the target so that ZAP has something to deal with
@@ -35,8 +36,8 @@ while (int(zap.spider.status(scanid)) < 100):
 print 'Spider completed'
 
 while (int(zap.pscan.records_to_scan) > 0):
-      print ('Records to passive scan : ' + zap.pscan.records_to_scan)
-      time.sleep(2)
+    print ('Records to passive scan : ' + zap.pscan.records_to_scan)
+    time.sleep(2)
 
 print 'Passive Scan completed'
 
@@ -53,4 +54,4 @@ print 'Active Scan completed'
 
 print 'Hosts: ' + ', '.join(zap.core.hosts)
 print 'Alerts: '
-pprint (zap.core.alerts())
+pprint(zap.core.alerts())
