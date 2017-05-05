@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 
+import datetime
 import time
 from pprint import pprint
 from zapv2 import ZAPv2
 
+
+time_format = "%a %b %d %H:%M%S %Y"
 
 # Change to match the API key set in ZAP, or use None if the API key is disabled
 apikey = None
@@ -19,22 +22,23 @@ zap._request(zap.base + 'openapi/action/importUrl/', {'url': 'http://petstore.sw
 target = 'http://petstore.swagger.io/v2/'
 
 # Proxy a request to the target so that ZAP has something to deal with
-print 'Accessing target %s' % target
+timestamp = datetime.datetime.today()
+print str(timestamp) + ' - ' + 'Accessing target %s' % target
 zap.urlopen(target)
 # Give the sites tree a chance to get updated
 time.sleep(2)
 
-print 'Active Scanning target %s' % target
+print str(timestamp) + ' - ' + 'Active Scanning target %s' % target
 scanid = zap.ascan.scan(target)
 while (int(zap.ascan.status(scanid)) < 100):
     # Loop until the scanner has finished
-    print 'Scan progress %: ' + zap.ascan.status(scanid)
+    print str(timestamp) + ' - ' + 'Scan progress %: ' + zap.ascan.status(scanid)
     time.sleep(5)
 
-print 'Active Scan completed'
+print str(timestamp) + ' - ' + 'Active Scan completed'
 
 # Report the results
-
+print str(timestamp) + ' - ' + 'Writing HTML Report'
 f = open('zap-report.html', 'w')
 f.write(zap.core.htmlreport())
 
