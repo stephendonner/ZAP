@@ -24,23 +24,6 @@ zap.urlopen(target)
 # Give the sites tree a chance to get updated
 time.sleep(2)
 
-# print 'Spidering target %s' % target
-# scanid = zap.spider.scan(target)
-# Give the Spider a chance to start
-# time.sleep(2)
-# while (int(zap.spider.status(scanid)) < 100):
-    # Loop until the spider has finished
-#    print 'Spider progress %: ' + zap.spider.status(scanid)
-#    time.sleep(2)
-
-# print 'Spider completed'
-
-# while (int(zap.pscan.records_to_scan) > 0):
-#    print ('Records to passive scan : ' + zap.pscan.records_to_scan)
-#    time.sleep(2)
-
-# print 'Passive Scan completed'
-
 print 'Active Scanning target %s' % target
 scanid = zap.ascan.scan(target)
 while (int(zap.ascan.status(scanid)) < 100):
@@ -52,7 +35,9 @@ print 'Active Scan completed'
 
 # Report the results
 
-print zap.core.htmlreport()
-print 'Hosts: ' + ', '.join(zap.core.hosts)
-print 'Alerts: '
+f = open('zap-report.html', 'w')
+f.write(zap.core.htmlreport())
+
+# print 'Hosts: ' + ', '.join(zap.core.hosts)
+# print 'Alerts: '
 pprint(zap.core.alerts())
