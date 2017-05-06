@@ -2,7 +2,6 @@
 
 import argparse
 import datetime
-import getopt
 import time
 from pprint import pprint
 from zapv2 import ZAPv2
