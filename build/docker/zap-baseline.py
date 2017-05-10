@@ -326,7 +326,7 @@ def main(argv):
                 '-addonupdate',
                 '-addoninstall', 'openapi'] # we want the Swagger/OpenAPI add-on
 =======
-                '-addonupdate', 
+                '-addonupdate',
                 '-addoninstall', 'openapi']	# In case we're running in the stable container
 >>>>>>> Pass openapi to -addoninstall, instead of passive-scan rules
 
